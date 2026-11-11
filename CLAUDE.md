@@ -35,6 +35,8 @@ uv run --group docs zensical build       # -> site/
 
 ## Rules
 
+- VS Code is the default editor (`.vscode/` holds the shared settings and recommended extensions). Notebooks are Jupytext `.py` files run cell by cell in VS Code; see `notebooks/README.md`.
+
 - Python ≥3.11, ruff line length 100, strict mypy on `src/`. Type-annotate public functions.
 - Tests are marked by folder (`tests/unit`, `tests/bambu`, `tests/vitis`). Golden vectors go in `tests/golden/<kernel>/`.
 - Never commit recordings (`data/`) or cloned repos (`external/`). The only exception is short attributed excerpts (CC BY or similar) used as golden-vector inputs in `tests/golden/<kernel>/`, with source, license and changes in its `README.md` and a row in `THIRD_PARTY.md`.

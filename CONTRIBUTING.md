@@ -12,6 +12,8 @@ uv sync --group docs          # only if you work on the docs site
 uv sync --group rtl           # only if you write cocotb testbenches
 ```
 
+**Editor:** VS Code is the project's default editor. Open the repository folder and accept the recommended extensions. `.vscode/settings.json` selects `.venv` and enables pytest and ruff. See `notebooks/README.md` for running notebooks.
+
 RTL simulation needs [Verilator](https://www.veripool.org/verilator/) on your `PATH`, and the baseline flow needs [Bambu](https://panda.dei.polimi.it/). For hardware files you need [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and [Verible](https://github.com/chipsalliance/verible); without them, those pre-commit hooks are skipped.
 
 ## Workflow
@@ -43,7 +45,7 @@ CI runs only what a change needs. Changes to Python run lint, type checks and un
 - Python: ruff (line length 100) and mypy in strict mode on `src/`. Type-annotate public functions.
 - HLS C++: clang-format (`.clang-format`).
 - Verilog: Verible lint and format.
-- Notebooks are stored as Jupytext percent-format `.py` files; `.ipynb` files are git-ignored. Run `uv run jupytext --sync notebooks/*.py` to pair them.
+- Notebooks are stored as Jupytext percent-format `.py` files; `.ipynb` files are git-ignored. In VS Code, run their cells directly from the `.py` file. Run `uv run jupytext --sync notebooks/*.py` to pair them with `.ipynb` files.
 
 ## Data
 

@@ -1,0 +1,12 @@
+{
+  // VS Code is the default editor for NeuroPyHLS. These extensions are offered on first open.
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "ms-toolsai.jupyter",
+    "charliermarsh.ruff",
+    "tamasfe.even-better-toml",
+    "mshr-h.veriloghdl"
+  ]
+}

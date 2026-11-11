@@ -11,6 +11,8 @@ uv sync
 uv run neuropyhls --help
 ```
 
+The project uses VS Code as its default editor: open the folder and accept the recommended extensions.
+
 For RTL simulation, install [Verilator](https://www.veripool.org/verilator/). For the baseline flow, also install [Bambu](https://panda.dei.polimi.it/). Vitis HLS is optional. Put them on your `PATH`.
 
 ## Reference code and recordings
