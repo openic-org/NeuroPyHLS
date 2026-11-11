@@ -66,3 +66,4 @@ Investigators and students may use AI assistants, including Claude or any other 
 | 2026-10-15 | Code analyses of CNN-ripple, realtime_decoder, fooof, spikeinterface and ghostipy (architecture, algorithm paths, HLS porting notes) | Claude (Claude Code) | M. Monge |
 | 2026-10-30 | Code-database tools (`tools/code_db/`): static AST extractor, SpikeInterface database, algorithm explorer page | Claude Opus 5.5 | M. Monge |
 | 2026-10-30 | Repository setup: options proposed for each topic, decisions made by the lead; skeleton, tooling, CI, docs site and contributor documents implemented | Claude Opus 5.5 | M. Monge |
+| 2026-11-11 | Quiroga simulator registered as a dataset; attributed CC BY golden-vector excerpt for bandpass-threshold; VS Code setup and notebook workflow | Claude Opus 5.5 | M. Monge |

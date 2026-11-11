@@ -1,0 +1,21 @@
+# Test configuration of the bandpass + threshold-crossing kernel.
+# Quantization and tolerances are set per kernel (decision 2026-11-11).
+
+[[input]]
+# Excerpt from the Quiroga simulator (see README.md for source and license).
+name = "quiroga_easy1_noise01_2s"
+dataset = "quiroga-simulator"
+member = "Simulator/C_Easy1_noise01.mat"
+start_s = 0.0
+duration_s = 2.0
+
+[quantization]
+# Signed integer input, like an ADC. The simulator is in arbitrary units (a.u.);
+# its peaks reach about +/-2.1 a.u., so +/-4 a.u. full scale leaves 2x headroom.
+bits = 16
+full_scale = 4.0      # a.u. mapped to +/- 2**(bits-1)
+rounding = "nearest"
+overflow = "saturate"
+
+[tolerance]
+# To be set when the kernel's Python reference is fixed.

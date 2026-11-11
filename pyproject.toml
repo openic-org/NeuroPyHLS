@@ -25,7 +25,15 @@ Issues = "https://github.com/openic-org/NeuroPyHLS/issues"
 neuropyhls = "neuropyhls.cli:main"
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.8", "mypy>=1.13", "pre-commit>=4", "jupytext>=1.16"]
+dev = [
+    "pytest>=8",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "pre-commit>=4",
+    "jupytext>=1.16",
+    "ipykernel>=7.4.0",
+    "scipy>=1.17.1",
+]
 docs = ["zensical>=0.0.73"]
 rtl = ["cocotb>=1.9"]
 

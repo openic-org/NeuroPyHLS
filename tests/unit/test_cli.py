@@ -37,4 +37,6 @@ def test_flow_option(tmp_path: Path) -> None:
 def test_manifests_parse() -> None:
     sources = load_sources(ROOT / "examples" / "sources.toml")
     assert any(s.name == "spikeinterface" and len(s.commit) == 40 for s in sources)
-    assert load_datasets(ROOT / "examples" / "datasets.toml") == []
+    datasets = load_datasets(ROOT / "examples" / "datasets.toml")
+    assert all(len(d.sha256) == 64 for d in datasets)
+    assert any(d.name == "quiroga-simulator" for d in datasets)
