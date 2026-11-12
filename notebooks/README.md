@@ -2,6 +2,11 @@
 
 Notebooks are stored as Jupytext **percent-format `.py` files**, in which `# %%` marks a cell. This keeps diffs readable and avoids committing outputs. The `.ipynb` copies are git-ignored.
 
+| Notebook | What it shows |
+|---|---|
+| `00_verification_metrics.py` | How a port is checked against its Python reference: max error and SNR |
+| `01_quiroga_explore.py` | Any Quiroga simulator recording, plotted with its ground-truth spikes and waveforms |
+
 ## In VS Code (default editor)
 
 VS Code is the project's default editor. Open the repository folder and accept the recommended extensions (`.vscode/extensions.json`).
@@ -30,6 +35,7 @@ Run `uv run jupytext --sync notebooks/*.py` and open the `.ipynb`. Jupyter keeps
 |---|---|---|
 | `.venv` (dev group) | `ipykernel` | The kernel VS Code starts to run cells |
 | `.venv` (dev group) | `jupytext` | Pairs the `.py` files with `.ipynb` |
+| `.venv` (dev group) | `matplotlib` | Plots, including `neuropyhls.data.plot` |
 | VS Code | Python (`ms-python.python`), Pylance, Python Debugger | Interpreter, editing and debugging |
 | VS Code | Jupyter (`ms-toolsai.jupyter`) | Interactive Window and notebook view |
 | VS Code (optional) | Ruff, Even Better TOML, Verilog-HDL | Linting and formatting, TOML files, `rtl/` |
