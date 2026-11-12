@@ -9,6 +9,7 @@
 # filename = "recording.nwb"
 # license = "CC-BY-4.0"
 # note = "What it is and which kernels use it."
+# reader = "quiroga-mat"   # optional: format reader for neuropyhls.data.load
 
 [[dataset]]
 name = "quiroga-simulator"
@@ -16,6 +17,7 @@ url = "https://ndownloader.figshare.com/files/21819066"
 sha256 = "de64fbf16d03eb4c0d3d1238dab16f91fe0c9dfb616a2fb4751617031bfe39d8"
 filename = "Simulator.zip"
 license = "CC-BY-4.0"
+reader = "quiroga-mat"
 note = """\
 Quian Quiroga simulated extracellular recordings (Martinez et al. 2009, J Neurosci Methods, \
 doi:10.1016/j.jneumeth.2009.08.017; Univ. of Leicester figshare 11897595). Zip of 24 \

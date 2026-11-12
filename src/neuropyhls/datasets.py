@@ -16,6 +16,7 @@ class Dataset:
     filename: str
     license: str
     note: str = ""
+    reader: str = ""  # format reader used by neuropyhls.data.load (see neuropyhls.data.readers)
 
 
 def load_datasets(path: Path) -> list[Dataset]:

@@ -19,10 +19,9 @@ Arrays in each `.npz`:
 
 Load with `np.load(path, allow_pickle=False)`.
 
-To regenerate, from the repository root:
+To regenerate, from the repository root (the dataset is downloaded on first use):
 
 ```bash
-uv run neuropyhls fetch quiroga-simulator
 uv run python tests/golden/bandpass-threshold/make_inputs.py
 ```
 

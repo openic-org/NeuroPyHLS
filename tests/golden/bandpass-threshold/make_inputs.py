@@ -1,19 +1,18 @@
 """Write the input golden vectors of the bandpass-threshold kernel from config.toml.
 
-Run from the repository root after `uv run neuropyhls fetch quiroga-simulator`:
+Run from the repository root (downloads the dataset on first use):
 
     uv run python tests/golden/bandpass-threshold/make_inputs.py
 """
 
 import tomllib
-import zipfile
 from pathlib import Path
 
 import numpy as np
-import scipy.io as sio
+
+from neuropyhls import data
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
 
 SOURCE = (
     "Martinez J, Pedreira C, Ison MJ, Quian Quiroga R (2009). Realistic simulation of "
@@ -28,17 +27,16 @@ def main() -> None:
     cfg = tomllib.loads((HERE / "config.toml").read_text())
     q = cfg["quantization"]
     for inp in cfg["input"]:
-        archive = ROOT / "data" / inp["dataset"] / "Simulator.zip"
-        with zipfile.ZipFile(archive) as z, z.open(inp["member"]) as f:
-            m = sio.loadmat(f)
-        fs = 1000.0 / float(np.ravel(m["samplingInterval"])[0])  # ms -> Hz
-        x = m["data"].ravel().astype(np.float64)
+        item = Path(inp["member"]).stem
+        rec = data.load(inp["dataset"], item)
+        fs = rec.fs
         start = round(inp["start_s"] * fs)
         n = round(inp["duration_s"] * fs)
-        seg = x[start : start + n]
+        seg = rec.traces[start : start + n, 0]
 
-        st = np.ravel(m["spike_times"][0, 0]).astype(np.int64)
-        sc = np.ravel(m["spike_class"][0, 0]).astype(np.int64)
+        spikes = rec.truth.to_spike_vector()  # sorted by sample; unit_index -> unit_ids
+        st = spikes["sample_index"].astype(np.int64)
+        sc = np.asarray(rec.truth.get_unit_ids())[spikes["unit_index"]].astype(np.int64)
         keep = (st >= start) & (st < start + n)
 
         lsb = 2 * q["full_scale"] / 2 ** q["bits"]

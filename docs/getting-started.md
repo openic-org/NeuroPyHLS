@@ -22,6 +22,23 @@ uv run neuropyhls fetch-sources   # clone pinned reference repos (examples/sourc
 uv run neuropyhls fetch           # download recordings (examples/datasets.toml) into data/, checking SHA-256
 ```
 
+## Explore a dataset
+
+From Python, IPython or a notebook cell in VS Code:
+
+```python
+from neuropyhls import data
+
+data.datasets()                       # registered datasets, and which are downloaded
+data.items("quiroga-simulator")       # recordings inside the dataset (downloads on first use)
+rec = data.load("quiroga-simulator", "C_Easy1_noise005")
+rec                                   # Recording(quiroga-simulator/C_Easy1_noise005: 1 ch, 24000 Hz, 60 s, ...)
+rec.traces, rec.fs                    # numpy (samples, channels) and sampling rate
+rec.recording, rec.truth              # SpikeInterface recording and ground-truth sorting
+```
+
+`rec.recording` and `rec.truth` are ordinary SpikeInterface objects, so SpikeInterface's filters, peak detection, ground-truth comparison and plots work on them directly. Datasets are found from `examples/datasets.toml` at the project root, from any subfolder; set `NEUROPYHLS_ROOT` or `NEUROPYHLS_DATA` to use other folders.
+
 ## Run the tests
 
 ```bash
