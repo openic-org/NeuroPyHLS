@@ -46,6 +46,9 @@ Run `uv run jupytext --sync notebooks/*.py` and open the `.ipynb`. Jupyter keeps
 |---|---|
 | VS Code | 1.144.0, Linux |
 | Python extension / Jupyter extension | 2026.10.0 / 2025.9.1 |
-| Python, ipykernel, jupytext | 3.12.3, 7.4.0, 1.19.6 |
+| Python, ipykernel, jupytext, matplotlib | 3.12.3, 7.4.0, 1.19.6, 3.11.2 |
+| uv | 0.13.8 |
 
 `00_verification_metrics.py` was paired with `jupytext --sync` and all of its cells ran in an ipykernel started from `.venv` (2026-11-11).
+
+`01_quiroga_explore.py` was run cell by cell in the VS Code Interactive Window, with all plots shown (2026-11-12). It was also run headlessly in a fresh clone after `uv sync --locked` and `neuropyhls fetch quiroga-simulator`.
