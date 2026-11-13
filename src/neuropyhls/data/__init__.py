@@ -8,6 +8,7 @@ data.items("quiroga-simulator")                   # recordings inside a dataset
 rec = data.load("quiroga-simulator", "C_Easy1_noise005")
 rec.recording, rec.truth                          # SpikeInterface recording and ground truth
 rec.traces, rec.fs                                # numpy samples x channels, Hz
+data.plot(rec, t0=1.0, dur=0.05)                  # trace with ground-truth spikes (matplotlib)
 ```
 
 Datasets are listed in ``examples/datasets.toml`` and downloaded into ``data/`` at the project
@@ -23,12 +24,13 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 
+from neuropyhls.data.plot import plot
 from neuropyhls.data.readers import READERS
 from neuropyhls.datasets import Dataset, fetch_dataset, load_datasets, sha256_of
 
 MANIFEST = Path("examples") / "datasets.toml"
 
-__all__ = ["DatasetInfo", "Recording", "datasets", "fetch", "info", "items", "load"]
+__all__ = ["DatasetInfo", "Recording", "datasets", "fetch", "info", "items", "load", "plot"]
 
 
 @dataclass(frozen=True)

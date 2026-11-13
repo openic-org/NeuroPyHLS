@@ -99,3 +99,23 @@ def test_no_project_root(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Non
     monkeypatch.chdir(tmp_path)
     with pytest.raises(FileNotFoundError, match="NEUROPYHLS_ROOT"):
         data.datasets()
+
+
+def test_plot_marks_truth_in_window(project: np.ndarray) -> None:
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    rec = data.load("fake", "C_Test_noise01")
+    ax = data.plot(rec, t0=0.0, dur=0.05)  # samples 0..1199: spikes at 100 (unit 1), 900 (unit 2)
+    trace, *markers = ax.get_lines()
+    np.testing.assert_array_equal(trace.get_ydata(), project[:1200])
+    assert [m.get_label() for m in markers] == ["unit 1 (1)", "unit 2 (1)"]
+    np.testing.assert_allclose(markers[0].get_xdata(), [100 / FS])
+
+    ax = data.plot(rec, dur=None, truth=False)
+    assert len(ax.get_lines()) == 1 and ax.get_lines()[0].get_ydata().size == project.size
+    with pytest.raises(ValueError, match="empty window"):
+        data.plot(rec, t0=1.0)
+    plt.close("all")

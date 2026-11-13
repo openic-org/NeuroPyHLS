@@ -37,6 +37,8 @@ uv run neuropyhls fetch-sources  # clones reference repos into external/
 uv run pytest -m unit
 ```
 
+To plot a recording from the Quiroga spike-sorting simulator, open `notebooks/01_quiroga_explore.py` in VS Code and run its cells with Shift+Enter. The steps are in [Getting started](https://openic-org.github.io/NeuroPyHLS/getting-started/#plot-a-recording-in-vs-code).
+
 Everything runs locally. The public docs site never processes recordings.
 
 ## Repository layout

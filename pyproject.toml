@@ -36,6 +36,7 @@ dev = [
     "pre-commit>=4",
     "jupytext>=1.16",
     "ipykernel>=7.4.0",
+    "matplotlib>=3.9",
 ]
 docs = ["zensical>=0.0.73"]
 rtl = ["cocotb>=1.9"]
